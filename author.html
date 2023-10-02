@@ -19,7 +19,9 @@
 
 
 <p id="result"></p>
-
+<div>
+    <img id="city" src="Ellora.jpg" alt="Ellora" width="100px" height="100px" onclick="selectImage()">
+</div>
 <script> 
 let good = 0
 let oops = 0
@@ -36,9 +38,24 @@ function checkAuthor (){
         oops++
         alert("Sorry")
         result.innerHTML = "wrong guess count oops: "+oops
+    }    
+}
+let useImage = 1
+function selectImage(){
+    switch (useImage) {
+        case 1:
+            document.getElementById('city').src="Ellora.jpg"
+            useImage=2
+            break;
+        case 2:
+            document.getElementById('city').src="Karimnagar.jpg"
+            useImage=3
+            break;
+        case 3:
+            document.getElementById('city').src="Ujjain.jpg"
+            useImage=1
+            break;
     }
-    
-    
 }
 </script>
 
