@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cruise selection</title>
+     </head>
+<body>
+
+<h2>Thirupathi goes on a cruise</h2>
+
+<form>
+    <input type="checkbox" id="cb1_shared" name="topping1"   
+      value="True" checked>
+    <label for="cb1_shared">Shares Cabin</label></br>
+  
+    <input type="checkbox" id="cb1_breakfast" name="topping2" 
+       value="True">
+    <label for="cb1_breakfast">Breakfast</label></br>
+  
+    <input type="checkbox" id="cb1_pool" name="topping3"   
+       value="False" checked>
+    <label for="cb1_pool">Pool Pass</label></br>
+
+    <input type="button" onclick="selectCruise()" value="Select a cruise">
+  </form>
+
+  <form>
+    <label for="form1_property">Enter the number of days </label>
+    <input type ="text" id="form1_property" name="form1_property" value="days"> <br>
+
+    <label for="form1_price">Enter price </label>
+    <input type ="text" id="form1_price" name="form1_price" autofocus> <br>
+
+    <input type="button" onclick="updateCruise()" value="Update the cruise">
+</form>
+<p id="result"></p>
+<p id="result2"></p>
+<script>
+let my_cruise = {} 
+function selectCruise() {
+    console.log("Getting input")
+    shared = document.getElementById("cb1_shared").checked
+    breakfast = document.getElementById("cb1_breakfast").checked
+    pool = document.getElementById("cb1_pool").checked
+    
+    my_cruise.isshared = shared;
+    my_cruise.isbreakfast = breakfast;
+    my_cruise.ispool = pool;
+ 
+    document.getElementById("result").innerHTML="Shared: "+my_cruise.isshared+" Breakfast: "+my_cruise.isbreakfast+" \nPool: "+my_cruise.ispool
+    
+}
+function updateCruise() {
+    let days = document.getElementById("form1_property").value;
+    let price = parseFloat(document.getElementById("form1_price").value)
+    my_cruise.day = days;
+    my_cruise.pric = price;
+    document.getElementById("result2").innerHTML="days: "+my_cruise.day+" price: "+my_cruise.pric
+}
+</script>
+
+</body>
+</html> 
