@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tips based on Bill</title>
+     </head>
+<body>
+
+<h2>Thirupathi shows tip amount</h2>
+
+<form>
+    <label for="form1_base">Enter base amount </label>
+    <input type ="number" id="form1_base" name="form1_base" value=50> <br>
+
+    <label for="form1_percent">Enter the tip percent </label>
+    <input type ="number" id="form1_percent" name="form1_percent" value=15 autofocus> <br>
+
+    <input type="button" onclick="tips()" value="Show tip">
+</form>
+<form>
+    <label for="r_sum">sum</label>
+    <input type="radio" id="r_sum" name="cal" value="sum"   
+      onclick="chooseOp()" ><br>
+  
+    <label for="r_diff">diff</label>
+    <input type="radio" id="r_diff" name="cal" 
+       value="difference" onclick="chooseOp()"><br>
+    
+    <label for="r_mult">mult</label>
+    <input type="radio" id="r_mult" name="cal" value="product"   
+         onclick="chooseOp()" ><br>
+     
+    <!-- <label for="r_div">Div</label></br>
+    <input type="radio" id="r_div" name="cal" 
+        value="division" onclick="chooseOp()"> -->
+  </form>
+
+<p id="result"> </p>
+<p id="calci"></p>
+
+<script> 
+
+function tips(){
+    let myOutput = "";
+    let i=0;
+    let base = parseFloat(document.getElementById("form1_base").value);
+    let percent = parseFloat(document.getElementById("form1_percent").value);
+    while(i<5){
+        calculated_tip =  base * ( percent / 100 );
+        calculated_tip = parseFloat(calculated_tip).toFixed(1);
+        myOutput = myOutput + percent + "% is " + calculated_tip + "; ";
+        percent+=4;
+        i++;
+    }
+    document.getElementById("result").innerHTML = "Tip are:"+myOutput
+}
+function chooseOp() {
+    let base = parseFloat(document.getElementById("form1_base").value);
+    let percent = parseFloat(document.getElementById("form1_percent").value);
+    sum_opt = document.getElementById("r_sum").checked
+    diff_opt = document.getElementById("r_diff").checked
+    mult_opt = document.getElementById("r_mult").checked
+    
+    if(sum_opt){
+        document.getElementById("calci").innerHTML = "sum of "+base+" and "+percent+" is "+ (base + percent)
+    }
+    if(diff_opt){
+        document.getElementById("calci").innerHTML = "difference of "+base+" and "+percent+" is "+ (base-percent)
+    }
+    if(mult_opt){
+        document.getElementById("calci").innerHTML = "product of "+base+" and "+percent+" is "+ (base*percent)
+    }
+
+}
+</script>
+
+</body>
+</html> 
