@@ -2,24 +2,33 @@
 <html>
  <head>
     <title>Author Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  </head>
 <body>
-<h1> Author entry Thirupathi Eluvaka</h1>
-<h2>Getting input</h2>
-
-<form>
-    <label for="form1_secret-author">The hidden author name</label>
+    <div><h1> Author entry Thirupathi Eluvaka</h1></div>
+<form class="form-horizontal">
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="form1_secret-author">The hidden author name</label>
+    
+    <div class="col-sm-10">
     <input type ="password" id="form1_secret-author" name="form1_secret-author" value="Dickens"> <br><br>
-
-    <label for="form1_author">Guess the author</label>
+</div>
+</div>
+<div class="form-group">
+    <label class="control-label col-sm-2" for="form1_author">Guess the author</label>
+    <div class="col-sm-10"></div>
     <input type ="text" id="form1_author" name="form1_author" autofocus> <br><br>
-
-    <input type="button" onclick="checkAuthor()" value="Check the guess">
+</div>
+<div class="form-group">        
+    <div class="col-sm-offset-2 col-sm-10">
+    <input class="btn btn-primary" id="check" type="button" onclick="checkAuthor()" value="Check the guess">
+</div></div>
 </form>
-
-
 <p id="result"></p>
-<div>
+<div id="wrong"></div>
+<div class="text-center">
     <img id="city" src="Ellora.jpg" alt="Ellora" width="100px" height="100px" onclick="selectImage()">
 </div>
 <script> 
@@ -36,9 +45,18 @@ function checkAuthor (){
     }
     else{
         oops++
+        if(oops==7){
+            document.getElementById("check").setAttribute( "onClick", "wrongGuess()" )
+        }
+        else{
         alert("Sorry")
-        result.innerHTML = "wrong guess count oops: "+oops
+        wrong.innerHTML = "wrong guess count oops: "+oops
+        }
     }    
+}
+function wrongGuess(){
+    alert("Sorry, ran out of guesses");
+    wrong.innerHTML = "You have reached the limit of wrong guesses: "+oops
 }
 let useImage = 1
 function selectImage(){
